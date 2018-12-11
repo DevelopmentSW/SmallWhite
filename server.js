@@ -20,7 +20,7 @@ app.post('/register', function (req, res) {
         });
 
         req.on("end",function(){
-            // 解析参数
+            // 解析参数body将字符串改成对象
 
             body = querystring.parse(body);
 
