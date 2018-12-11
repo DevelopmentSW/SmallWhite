@@ -53,6 +53,10 @@ app.post('/register', function (req, res) {
                         database : 'mysql'
                     });
 
+
+                    if(body.password == body.repassword){
+
+
                     connection1.connect();
                     var addsql = "insert into users(name,password) values(?,?)";
                     var params = [body.name,body.password];
@@ -66,7 +70,9 @@ app.post('/register', function (req, res) {
 
                     connection1.end();
 
-                }
+                    }else{
+                        res.send("两次输入的密码不一致，注册失败");
+                    }}
             });
 
             connection.end();
