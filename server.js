@@ -65,7 +65,7 @@ app.post('/register', function (req, res) {
                             console.log('[INSERT ERROR] - ',err.message);
                             return;
                         }
-                        res.send("注册成功(下一步跳转回登录界面)")
+                        res.redirect( 302,'http://localhost:63342/SmallWhite/netLoad.html?_ijt=hhtd8r8ncl4fo526k5fh0rht3e');
                     });
 
                     connection1.end();
@@ -79,11 +79,14 @@ app.post('/register', function (req, res) {
 
         });
     };
-})
+
+
+});
 
 
 // 登录功能
 app.post('/load', function (req, res) {
+
     console.log("我是登录功能");
     var body = "";
     req.on('data', function (chunk) {
@@ -119,7 +122,7 @@ app.post('/load', function (req, res) {
                     return;
                 }
                 if(result != ""){
-                    res.send("登陆成功！(下一步跳转到用户网盘界面)")
+                    res.redirect( 302,'http://www.baidu.com');
                 }else{
                     res.send("查无此用户！")
                 }
@@ -131,31 +134,16 @@ app.post('/load', function (req, res) {
     };
 
 
-})
+});
 
 
 
 
 
-//  /del_user 页面响应
-app.get('/del_user', function (req, res) {
-    console.log("/del_user 响应 DELETE 请求");
-    res.send('删除页面');
-})
-
-//  /list_user 页面 GET 请求
-app.get('/list_user', function (req, res) {
-    console.log("/list_user GET 请求");
-    res.send('用户列表页面');
-})
-
-// 对页面 abcd, abxcd, ab123cd, 等响应 GET 请求
-app.get('/ab*cd', function(req, res) {
-    console.log("/ab*cd GET 请求");
-    res.send('正则匹配');
-})
 
 
+
+//开启服务器监听8088端口
 var server = app.listen(8088, function () {
 
     var host = server.address().address
