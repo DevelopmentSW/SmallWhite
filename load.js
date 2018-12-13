@@ -3,6 +3,8 @@ var querystring = require('querystring');
 var mysql  = require('mysql');
 var url = require("url");
 var path = require("path");
+var express = require("express");
+var app = express();
 
 
 var server = http.createServer();
@@ -28,14 +30,14 @@ var server = http.createServer();
             var connection = mysql.createConnection({
                 host     : 'localhost',
                 user     : 'root',
-                password : 'root',
+                password : '',
                 port: '3306',
-                database: 'mysql'
+                database: 'Yun'
             });
 
             connection.connect();
 
-            var  sql = "SELECT * FROM users where name = '"+body.name+"' and password = '"+body.password+"'";
+            var sql = "select * from users where name = '"+body.name+"' and password = '"+body.password+"'";
             //查询用户是否存在
             connection.query(sql,function (err, result) {
                 if(err){
@@ -43,7 +45,8 @@ var server = http.createServer();
                     return;
                 }
                 if(result != ""){
-                    console.log("登陆成功！")
+                    console.log("登陆成功！");
+                  res.redirect( 302,'http://localhost:63342/SmallWhite/pan.html?_ijt=gme0bbq1pn9f7np1mmagvkhsnd');
                 }else{
                     console.log("查无此用户！")
                 }
@@ -54,7 +57,7 @@ var server = http.createServer();
             connection.end();
 
         });
-    };
+    }
 
     res.end();
 

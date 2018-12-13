@@ -1,0 +1,26 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title 云盘
+    link(rel='stylesheet', type='text/css', href='../css/pan.css')
+    script(type='text/javascript', src='../js/jquery.min.js')
+  body
+    div
+      input.upload(title='点击上传文件', type='file', name='上传')
+    table
+      thead
+        tr
+          th 文件名
+          th 下载
+          th 删除
+      tbody
+        each item in arr
+          tr
+            td #{item.name}
+            td #{}
+            td #{}
+
+
+
+

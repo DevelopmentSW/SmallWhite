@@ -1,8 +1,3 @@
-
-
-
-
-
 var http = require('http');
 var querystring = require('querystring');
 var mysql  = require('mysql');
@@ -76,7 +71,7 @@ server.on("request",function (req,res) {
             connection.end();
 
         });
-    };
+    }
 
     res.end();
 
