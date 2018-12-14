@@ -1,0 +1,10 @@
+.upload{
+  position: absolute;
+  margin:  20px 200px 50px 40px;
+  cursor: pointer;
+}
+
+.all{
+  position: absolute;
+  margin:  40px 200px 50px 40px;
+}
