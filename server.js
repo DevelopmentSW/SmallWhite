@@ -47,7 +47,7 @@ app.post('/register', function (req, res) {
                     return;
                 }
                 if(result != ""){
-                   res.send("用户已存在，注册失败");
+                   res.send("用户已存在，注册失败!(2秒后自动跳转回注册页面)"+"<script>window.setTimeout(\"window.location='http://localhost:63342/SmallWhite1/views/netRegister.html?_ijt=f6l5238tr2b67r1ccq9l1rgghk'\",2000);</script> ");
                 }else{
                     var connection1 = mysql.createConnection({
                         multipleStatements: true,
@@ -59,7 +59,7 @@ app.post('/register', function (req, res) {
                     });
 
 
-                    if(body.password == body.repassword){
+
                     connection1.connect();
                     var addsql = "insert into users(name,password) values(?,?);CREATE TABLE "+body.name+"(id int primary key,name varchar(255),address varchar(255))";
                     var params = [body.name,body.password];
@@ -73,17 +73,13 @@ app.post('/register', function (req, res) {
 
                     connection1.end();
 
-                    }else{
-                        res.send("两次输入的密码不一致，注册失败");
-                    }}
+                    }
             });
 
             connection.end();
 
         });
     };
-
-
 });
 
 
@@ -130,7 +126,7 @@ app.post('/load', function (req, res) {
                 if(result != ""){
                     res.redirect( 302,'http://www.baidu.com');
                 }else{
-                    res.send("查无此用户！")
+                    res.send("查无此用户！（2s后返回登录页面）"+"<script>window.setTimeout(\"window.location='http://localhost:63342/SmallWhite1/views/netLoad.html?_ijt=pp9m103adqe1p0hg0u11nv3tdr'\",2000);</script> ");
                 }
             });
 

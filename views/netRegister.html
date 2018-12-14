@@ -20,10 +20,10 @@
                     <input type="text" name="name" placeholder="用户名"><em>由5-8个字符组成！</em>
                 </div>
                 <div class="password">
-                    <input type="text" name="password" placeholder="密码"><em>使用字母、数字、符号两种及以上的组合，8-12个字符</em>
+                    <input type="text" name="password" placeholder="密码" id="pwd1"><em>使用字母、数字、符号两种及以上的组合，8-12个字符</em>
                 </div>
                 <div class="againpwd">
-                    <input type="text" name="repassword" placeholder="再次输入密码"><em>确保两次密码一致</em>
+                    <input type="text" name="repassword" placeholder="再次输入密码" id="pwd2" onblur="pwd()"><em>确保两次密码一致</em>
                 </div>
                 <button>注册</button>
             </form>
@@ -43,3 +43,13 @@
 </div>
 </body>
 </html>
+<script>
+    function pwd() {
+        var pwd1 = document.getElementById("pwd1").value;
+        var pwd2 = document.getElementById("pwd2").value;
+        if(pwd1 != pwd2){
+            alert("两次输入的密码不一致,请重新注册！");
+            window.location.reload();
+        }
+    }
+</script>
