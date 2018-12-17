@@ -6,8 +6,6 @@ html(lang='en')
     link(rel='stylesheet', type='text/css', href='../css/pan.css')
     script(type='text/javascript', src='../js/jquery.min.js')
   body
-    div
-      input.upload(title='点击上传文件', type='file', name='上传')
     table
       thead
         tr
@@ -15,12 +13,11 @@ html(lang='en')
           th 下载
           th 删除
       tbody
-        each item in arr
+        each item in resource
           tr
-            td #{item.name}
-            td #{}
-            td #{}
-
-
+            td  #{item.name}
+            td
+            td
+              a.btn.btn-danger.del(type="button", href="/delete?id=#{item.id}") 删除
 
 
