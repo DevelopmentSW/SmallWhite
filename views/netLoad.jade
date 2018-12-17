@@ -1,0 +1,40 @@
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        title Login
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        script(type='application/x-javascript').
+            addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+        meta(name='keywords', content='Flat Dark Web Login Form Responsive Templates, Iphone Widget Template, Smartphone login forms,Login form, Widget Template, Responsive Templates, a Ipad 404 Templates, Flat Responsive Templates')
+        link(href='stylesheets/style.css', rel='stylesheet', type='text/css')
+    body
+        script.
+            $(document).ready(function(c) {
+                $('.close').on('click', function(c){
+                    $('.login-form').fadeOut('slow', function(c){
+                        $('.login-form').remove();
+                    });
+                });
+            });
+        // SIGN UP
+        h1 SmallWhite网盘
+        .login-form
+            .close
+            .head-info
+                label.lbl-1
+                label.lbl-2
+                label.lbl-3
+            .clear
+            .avtar
+                img(src='../images/avtar.png')
+            form(method='post', action='http://localhost:8088/load')
+                input.text(type='text', name='name', value='Username', onfocus="this.value = '';", onblur="if (this.value == '') {this.value = 'Username';}")
+                .key
+                    input(type='text', value='text', name='password', onfocus="this.value = '';", onblur="if (this.value == '') {this.value = 'Password';}")
+                .signin
+                    input(type='submit', value='Login')
+        .copy-rights
+            p
+                | Copyright © Company name All rights reserved.More Templates
+                a(href='http://127.0.0.1:8088/netRegister', target='_self', title='注册') 点我注册！

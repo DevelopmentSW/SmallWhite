@@ -8,7 +8,7 @@ html,body,.wrapper{
 	overflow: hidden;
 }
 .wrapper{
-	background-image: url("../img/bj.gif");
+	background-image: url("../images/bj.gif");
 	background-size: 100% 100%;
 	position: relative;
 }

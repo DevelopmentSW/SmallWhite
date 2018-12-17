@@ -1,0 +1,66 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        title 注册页面
+        link(rel='stylesheet', type='text/css', href='stylesheets/regist.css')
+        script(type='text/javascript', src='../js/jquery.min.js')
+    body
+        .wrapper
+            article
+                h1
+                    em SmallWhite
+                    span 网盘用户注册
+                .main
+                    form(method='post', action='http://localhost:8088/register',onsubmit="return check()")
+                        .tel
+                            input#phone(type='tel', name='phone', placeholder='手机号')
+                            em 由11个字符组成！
+                        .userName
+                            input#name(type='text', name='name', placeholder='用户名')
+                            em 由5-8个字符组成！
+                        .password
+                            input#pwd1(type='text', name='password', placeholder='密码')
+                            em 使用字母、数字、符号两种及以上的组合，8-12个字符
+                        .againpwd
+                            input#pwd2(type='text', name='repassword', placeholder='再次输入密码', onblur='pwd()')
+                            em 确保两次密码一致
+                        button#btn() 注册
+            footer
+                ul
+                    li
+                        a(href='#') 联系我们
+                    li
+                        a(href='#') 关于我们
+                    li
+                        a(href='#') 人才招聘
+                    li
+                        a(href='#') 友情链接
+                    li
+                        a(href='#') 公司地址
+                    li
+                        a(href='#') 关注我们
+                p
+                    | 本网站版权归SamllWhite技术有限公司所有
+        script.
+            function pwd() {
+                console.log("进入pwd方法")
+                var pwd1 = document.getElementById("pwd1").value;
+                var pwd2 = document.getElementById("pwd2").value;
+                if(pwd1 !== pwd2){
+                    alert("两次输入的密码不一致,请重新注册！");
+                    window.location.reload();
+                };
+            };
+            function check() {
+                console.log("进入click方法");
+                var pwd1 = document.getElementById("pwd1").value;
+                var pwd2 = document.getElementById("pwd2").value;
+                var phone = document.getElementById("phone").value;
+                var name = document.getElementById("name").value;
+                if (pwd1 == "" || pwd2 == "" || phone == "" || name == "") {
+                    alert("有信息未填写，请重新注册");
+                   return false;
+
+                };
+            };

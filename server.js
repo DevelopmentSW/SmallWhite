@@ -6,6 +6,27 @@ var path = require("path");
 var express = require("express");
 var app = express();
 
+//设置模板引擎
+app.set("view engine",'jade');
+app.set('views','./views');
+
+//设置静态资源
+app.use(express.static(path.join(__dirname, './public')));
+
+
+
+//注册登录页面jade
+app.get("/netLoad",function (req,res) {
+    res.render('netLoad.jade');
+})
+
+
+//注册注册页面jade
+app.get("/netRegister",function (req,res) {
+    res.render('netRegister.jade');
+})
+
+
 
 
 
@@ -47,7 +68,7 @@ app.post('/register', function (req, res) {
                     return;
                 }
                 if(result != ""){
-                   res.send("用户已存在，注册失败");
+                   res.send("用户已存在，注册失败!(2秒后自动跳转回注册页面)"+"<script>window.setTimeout(\"window.location='http://127.0.0.1:8088/netRegister'\",2000);</script> ");
                 }else{
                     var connection1 = mysql.createConnection({
                         multipleStatements: true,
@@ -59,7 +80,7 @@ app.post('/register', function (req, res) {
                     });
 
 
-                    if(body.password == body.repassword){
+
                     connection1.connect();
                     var addsql = "insert into users(name,password) values(?,?);CREATE TABLE "+body.name+"(id int primary key,name varchar(255),address varchar(255))";
                     var params = [body.name,body.password];
@@ -68,22 +89,18 @@ app.post('/register', function (req, res) {
                             console.log('[INSERT ERROR] - ',err.message);
                             return;
                         }
-                        res.redirect(302,"http://localhost:63342/SmallWhite1/views/netLoad.html?_ijt=o1sa43ff00uee21gvo8u3baa6q")
+                        res.redirect(302,"http://127.0.0.1:8088/netLoad")
                     });
 
                     connection1.end();
 
-                    }else{
-                        res.send("两次输入的密码不一致，注册失败");
-                    }}
+                    }
             });
 
             connection.end();
 
         });
     };
-
-
 });
 
 
@@ -130,7 +147,7 @@ app.post('/load', function (req, res) {
                 if(result != ""){
                     res.redirect( 302,'http://www.baidu.com');
                 }else{
-                    res.send("查无此用户！")
+                    res.send("查无此用户！（2s后返回登录页面）"+"<script>window.setTimeout(\"window.location='http://localhost:63342/SmallWhite1/views/netLoad.html?_ijt=pp9m103adqe1p0hg0u11nv3tdr'\",2000);</script> ");
                 }
             });
 
